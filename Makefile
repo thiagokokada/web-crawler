@@ -15,7 +15,9 @@ test:
 	poetry run pytest -vv
 
 test-ci:
-	poetry run pytest -vv --mypy --mypy-ignore-missing-imports --black
+	poetry run pytest -vv
+	poetry run black --check .
+	poetry run mypy . --ignore-missing-imports
 
 format:
 	poetry run black web_crawler tests
