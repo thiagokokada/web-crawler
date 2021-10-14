@@ -85,7 +85,7 @@ class Crawler:
         # the previous values from crawl.url_status()
         for found_url_result in recursively_found_urls:
             if isinstance(found_url_result, httpx.HTTPError):
-                url = str(found_url_result.request.url)
+                url = str(found_url_result.request.url)  # type: ignore
                 result[current_url].update({url: found_url_result})
             else:
                 result[current_url].update(found_url_result)

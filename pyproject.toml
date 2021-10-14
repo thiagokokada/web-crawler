@@ -7,18 +7,18 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.8"
-beautifulsoup4 = "^4.9.3"
-httpx = "^0.17.1"
+beautifulsoup4 = "^4.10.0"
+httpx = "^0.19.0"
 
 [tool.poetry.dev-dependencies]
-pytest = "^6.0"
-mypy = "^0.812"
+pytest = "^6.2.5"
+mypy = "^0.910"
 pytest-mypy = "^0.8.1"
-black = "^20.8b1"
+black = "^21.9b0"
 pytest-black = "^0.3.12"
 pytest-datafixtures = "^1.0.0"
-pytest-asyncio = "^0.14.0"
-pytest-httpx = "^0.11.0"
+pytest-asyncio = "^0.15.1"
+pytest-httpx = "^0.13.0"
 
 [tool.poetry.scripts]
 web-crawler = "web_crawler.__main__:run"
