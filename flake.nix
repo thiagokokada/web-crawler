@@ -11,10 +11,7 @@
       overlay = nixpkgs.lib.composeManyExtensions [
         poetry2nix.overlay
         (final: prev: {
-          # The application
-          web-crawler = prev.poetry2nix.mkPoetryApplication {
-            projectDir = ./.;
-          };
+          web-crawler = import ./default.nix { inherit poetry2nix; };
         })
       ];
     } // (flake-utils.lib.eachDefaultSystem (system:
@@ -23,13 +20,12 @@
           inherit system;
           overlays = [ self.overlay ];
         };
+        inherit (flake-utils.lib) mkApp;
       in
-      rec {
-        apps = {
-          web-crawler = pkgs.web-crawler;
-        };
+      {
+        apps.web-crawler = mkApp { drv = pkgs.web-crawler; };
 
-        defaultApp = apps.web-crawler;
+        defaultApp = self.apps.${system}.web-crawler;
 
         devShell = import ./shell.nix { inherit pkgs; };
       }));
