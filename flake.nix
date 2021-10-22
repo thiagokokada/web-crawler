@@ -21,8 +21,7 @@
           inherit system;
           overlays = [ self.overlay ];
         };
-        inherit (flake-utils.lib) mkApp;
-      in
+        in
       {
         defaultPackage = pkgs.web-crawler;
 
